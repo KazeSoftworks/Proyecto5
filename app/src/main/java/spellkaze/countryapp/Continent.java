@@ -23,4 +23,9 @@ public class Continent {
     {
         return isActive;
     }
+
+    public void setIsActive(boolean change)
+    {
+        isActive = change;
+    }
 }

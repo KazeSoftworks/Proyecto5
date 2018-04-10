@@ -2,11 +2,14 @@ package spellkaze.countryapp;
 
 import android.app.Activity;
 import android.content.Context;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import java.util.ArrayList;
 
@@ -18,6 +21,7 @@ public class AdapterSettingList extends BaseAdapter {
 
     protected Activity activity;
     protected ArrayList<Continent> listContinent;
+    DataHolder dataHolder = DataHolder.getInstance();
 
     public AdapterSettingList(Activity activity, ArrayList<Continent> listContinent)
     {
@@ -52,11 +56,20 @@ public class AdapterSettingList extends BaseAdapter {
 
         Continent continent = listContinent.get(position);
 
-        CheckBox checkBox = customView.findViewById(R.id.checkBox);
+        final CheckBox checkBox = customView.findViewById(R.id.checkBox);
         checkBox.setText(continent.getContinent());
         checkBox.setChecked(continent.getIsActive());
 
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                dataHolder.changeIsActive(position, checkBox.isChecked());
+            }
+        });
 
         return customView;
     }
+
+
 }
+

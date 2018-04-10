@@ -193,4 +193,11 @@ public class MainActivity extends AppCompatActivity {
         CountryConfiguration();
         //here you can handle orientation change
     }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        ChangeToContinentLayout();
+    }
 }

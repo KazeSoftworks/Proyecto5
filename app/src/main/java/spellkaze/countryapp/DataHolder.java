@@ -82,5 +82,23 @@ public class DataHolder {
         return selectedContinent;
     }
 
+    public void changeIsActive(int position, boolean change){
+            continents.get(position).setIsActive(change);
+
+    }
+
+    public ArrayList<Continent> getActiveContinents()
+    {
+        ArrayList<Continent> activeContinents = new ArrayList<>();
+
+        for(Continent continent : continents)
+        {
+            if(continent.getIsActive())
+            {
+                activeContinents.add(continent);
+            }
+        }
+        return activeContinents;
+    }
 
 }

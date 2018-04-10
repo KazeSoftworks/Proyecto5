@@ -51,7 +51,7 @@ public class ContinentListFragment extends Fragment {
 
         super.onActivityCreated(state);
         continentListView = (ListView) getView().findViewById(R.id.ContinentList);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, continentTraductionString(dataHolder.getContinents()));
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, continentTraductionString(dataHolder.getActiveContinents()));
 
         continentListView.setAdapter(arrayAdapter);
         continentListView.setOnItemClickListener(SelectItemOnList);
@@ -61,9 +61,9 @@ public class ContinentListFragment extends Fragment {
     private final AdapterView.OnItemClickListener SelectItemOnList = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            String continentName = dataHolder.getContinents().get(position).getContinent();
+            String continentName = dataHolder.getActiveContinents().get(position).getContinent();
             Log.v("ClickEvent", continentName);
-            Continent continentTranslatedName = continentTraduction(dataHolder.getContinents()).get(position);
+            Continent continentTranslatedName = continentTraduction(dataHolder.getActiveContinents()).get(position);
 
             dataHolder.setSelectedContinent(continentTranslatedName.getContinent());
             dataHolder.setSelectedCountryList(ListByContinent(dataHolder.getCountryList(), continentName));

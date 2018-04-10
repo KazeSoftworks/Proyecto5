@@ -1,5 +1,6 @@
 package spellkaze.countryapp;
 
+import android.content.Intent;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,5 +33,6 @@ public class SettingsActivity extends AppCompatActivity {
         AdapterSettingList arrayAdapter = new AdapterSettingList(this, dataHolder.getContinents());
         listView.setAdapter(arrayAdapter);
     }
+
 
 }
